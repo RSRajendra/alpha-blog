@@ -1,0 +1,19 @@
+<h1>Articles listing page</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <%= @articles.length.times do |i| %>
+            <tr>
+                <td><%= @articles[i].title %></td>
+                <td><%= @articles[i].description  %></td>
+                <td>Actions</td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
