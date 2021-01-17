@@ -1,0 +1,36 @@
+<h1 class="text-center mt-4">Alpha Bloggers</h1>
+<div class="flickr_pagination">
+    <div class="page_info">
+    </div>
+    <%= will_paginate @users, :container => false %>
+</div>
+<div class="container">
+    <%= @users.length.times do |i| %>
+        <div class="row justify-content-md-center">
+            <div class="col-8 mt-4">
+                <div class="card text-center shadow mb-5 bg-white rounded">
+                        <div class="card-header font-italic">
+                            <%= link_to @users[i].username, @users[i]  %>
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= link_to gravatar_for(@users[i],size: 150), @users[i] %>
+                            </h5>
+                            <p class="card-text"><%= pluralize(@users[i].articles.count, "article")  %></p>
+                            <%= link_to 'View Profile', @users[i], class: "btn btn-outline-success", method: :get %>
+                            <%= link_to 'Edit Profile', edit_user_path(@users[i]), class: "btn btn-outline-info", method: :get %>
+                        </div>
+                        <div class="card-footer text-muted">
+                            <small>Joined <%= time_ago_in_words(@users[i].created_at) %> ago</small>
+                        </div>
+                </div>
+            </div>    
+        </div>
+    <% end %>
+</div>
+
+<div class="flickr_pagination mb-4">
+    <div class="page_info">
+    </div>
+    <%= will_paginate @users, :container => false %>
+</div>

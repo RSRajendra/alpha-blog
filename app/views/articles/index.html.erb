@@ -1,27 +1,13 @@
-
-    <h1 class="text-center mt-4">Listing all articles</h1>
-<div class="container">
-    <%= @articles.length.times do |i| %>
-        <div class="row justify-content-md-center">
-            <div class="col-8 mt-4">
-                <div class="card text-center shadow mb-5 bg-white rounded">
-                        <div class="card-header font-italic">
-                            <%= @articles[i].user.username if @articles[i].user %>
-                        </div>
-                        <div class="card-body">
-                            <h5 class="card-title"><%= link_to @articles[i].title, article_path(@articles[i]), class: "text-success" %></h5>
-                            <p class="card-text"><%= truncate(@articles[i].description,length: 100)  %></p>
-                            <%= link_to 'View', article_path(@articles[i]), class: "btn btn-outline-success", method: :get %>
-                            <%= link_to 'Edit', edit_article_path(@articles[i]), class: "btn btn-outline-info", method: :get %>
-                            <%= link_to 'Delete', article_path(@articles[i]), class: "btn btn-outline-danger", method: :delete, data: {confirm: "Are you sure ?"}  %>
-                        </div>
-                        <div class="card-footer text-muted">
-                            <small>Created <%= time_ago_in_words(@articles[i].created_at) %> ago,
-                            edited <%= time_ago_in_words(@articles[i].updated_at) %> ago</small>
-                        </div>
-                </div>
-            </div>    
-        </div>
-    <% end %>
+<h1 class="text-center mt-4">Listing all articles</h1>
+<div class="flickr_pagination">
+    <div class="page_info">
+    </div>
+    <%= will_paginate @articles, :container => false %>
 </div>
+<%= render 'article', obj: @articles %>
 
+<div class="flickr_pagination mb-4">
+    <div class="page_info">
+    </div>
+    <%= will_paginate @articles, :container => false %>
+</div>
