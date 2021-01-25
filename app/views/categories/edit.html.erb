@@ -1,4 +1,4 @@
-<h1 class="text-center mt-4">Create a new category</h1>
+<h1 class="text-center mt-4">Edit category</h1>
 
 <div class="container">
     <%= render 'shared/errors', obj: @category %>
@@ -18,7 +18,7 @@
             <% end %>
         </div>   
         <div class="text-center mb-3"> 
-           <%= link_to '[ Cancel And Return To Articles Listing ]', categories_path, method: :get, class: 'text-info' %> 
+           <%= link_to '[ Cancel And Return To Category Listing ]', category_path(@category), method: :get, class: 'text-info' %> 
         </div>
     </div>
  </div>
